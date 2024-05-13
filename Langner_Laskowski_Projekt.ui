@@ -1,0 +1,28 @@
+<UI version="4.0" >
+ <class>Langner_Laskowski_ProjektClass</class>
+ <widget class="QMainWindow" name="Langner_Laskowski_ProjektClass" >
+  <property name="objectName" >
+   <string notr="true">Langner_Laskowski_ProjektClass</string>
+  </property>
+  <property name="geometry" >
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>600</width>
+    <height>400</height>
+   </rect>
+  </property>
+  <property name="windowTitle" >
+   <string>Langner_Laskowski_Projekt</string>
+  </property>  <widget class="QMenuBar" name="menuBar" />
+  <widget class="QToolBar" name="mainToolBar" />
+  <widget class="QWidget" name="centralWidget" />
+  <widget class="QStatusBar" name="statusBar" />
+ </widget>
+ <layoutDefault spacing="6" margin="11" />
+ <pixmapfunction></pixmapfunction>
+ <resources>
+   <include location="Langner_Laskowski_Projekt.qrc"/>
+ </resources>
+ <connections/>
+</UI>
