@@ -1,10 +1,8 @@
-<UI version="4.0" >
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
  <class>Langner_Laskowski_ProjektClass</class>
- <widget class="QMainWindow" name="Langner_Laskowski_ProjektClass" >
-  <property name="objectName" >
-   <string notr="true">Langner_Laskowski_ProjektClass</string>
-  </property>
-  <property name="geometry" >
+ <widget class="QMainWindow" name="Langner_Laskowski_ProjektClass">
+  <property name="geometry">
    <rect>
     <x>0</x>
     <y>0</y>
@@ -12,17 +10,166 @@
     <height>400</height>
    </rect>
   </property>
-  <property name="windowTitle" >
+  <property name="windowTitle">
    <string>Langner_Laskowski_Projekt</string>
-  </property>  <widget class="QMenuBar" name="menuBar" />
-  <widget class="QToolBar" name="mainToolBar" />
-  <widget class="QWidget" name="centralWidget" />
-  <widget class="QStatusBar" name="statusBar" />
+  </property>
+  <widget class="QWidget" name="centralWidget">
+   <widget class="QPushButton" name="add_Button">
+    <property name="geometry">
+     <rect>
+      <x>330</x>
+      <y>60</y>
+      <width>75</width>
+      <height>24</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Dodaj</string>
+    </property>
+   </widget>
+   <widget class="QTextEdit" name="enter_A">
+    <property name="geometry">
+     <rect>
+      <x>80</x>
+      <y>40</y>
+      <width>104</width>
+      <height>71</height>
+     </rect>
+    </property>
+   </widget>
+   <widget class="QTextEdit" name="enter_B">
+    <property name="geometry">
+     <rect>
+      <x>210</x>
+      <y>40</y>
+      <width>104</width>
+      <height>71</height>
+     </rect>
+    </property>
+   </widget>
+   <widget class="QLabel" name="result_Label">
+    <property name="geometry">
+     <rect>
+      <x>450</x>
+      <y>20</y>
+      <width>49</width>
+      <height>16</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Wynik</string>
+    </property>
+   </widget>
+   <widget class="QTextEdit" name="result_Box">
+    <property name="geometry">
+     <rect>
+      <x>420</x>
+      <y>40</y>
+      <width>104</width>
+      <height>71</height>
+     </rect>
+    </property>
+   </widget>
+   <widget class="QLabel" name="first_number_label">
+    <property name="geometry">
+     <rect>
+      <x>100</x>
+      <y>20</y>
+      <width>71</width>
+      <height>16</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>First Number</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="second_number_label">
+    <property name="geometry">
+     <rect>
+      <x>220</x>
+      <y>20</y>
+      <width>91</width>
+      <height>16</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Second Number</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="subb_Button">
+    <property name="geometry">
+     <rect>
+      <x>330</x>
+      <y>90</y>
+      <width>75</width>
+      <height>24</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Odejmij</string>
+    </property>
+   </widget>
+  </widget>
+  <widget class="QMenuBar" name="menuBar">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>600</width>
+     <height>22</height>
+    </rect>
+   </property>
+  </widget>
+  <widget class="QToolBar" name="mainToolBar">
+   <attribute name="toolBarArea">
+    <enum>TopToolBarArea</enum>
+   </attribute>
+   <attribute name="toolBarBreak">
+    <bool>false</bool>
+   </attribute>
+  </widget>
+  <widget class="QStatusBar" name="statusBar"/>
  </widget>
- <layoutDefault spacing="6" margin="11" />
- <pixmapfunction></pixmapfunction>
+ <layoutdefault spacing="6" margin="11"/>
  <resources>
-   <include location="Langner_Laskowski_Projekt.qrc"/>
+  <include location="Langner_Laskowski_Projekt.qrc"/>
  </resources>
- <connections/>
-</UI>
+ <connections>
+  <connection>
+   <sender>add_Button</sender>
+   <signal>clicked()</signal>
+   <receiver>Langner_Laskowski_ProjektClass</receiver>
+   <slot>addButton_clicked()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>367</x>
+     <y>105</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>299</x>
+     <y>199</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>subb_Button</sender>
+   <signal>clicked()</signal>
+   <receiver>Langner_Laskowski_ProjektClass</receiver>
+   <slot>subbButton_clicked()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>388</x>
+     <y>135</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>457</x>
+     <y>199</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
+ <slots>
+  <slot>addButton_clicked()</slot>
+  <slot>subbButton_clicked()</slot>
+ </slots>
+</ui>

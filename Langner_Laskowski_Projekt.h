@@ -13,4 +13,9 @@ public:
 
 private:
     Ui::Langner_Laskowski_ProjektClass ui;
+
+    private slots:
+    void addButton_clicked();
+    void subbButton_clicked();
+
 };
