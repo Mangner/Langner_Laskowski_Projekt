@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
- <class>Langner_Laskowski_ProjektClass</class>
- <widget class="QMainWindow" name="Langner_Laskowski_ProjektClass">
+ <class>MainWindowClass</class>
+ <widget class="QMainWindow" name="MainWindowClass">
   <property name="geometry">
    <rect>
     <x>0</x>
@@ -138,7 +138,7 @@
   <connection>
    <sender>add_Button</sender>
    <signal>clicked()</signal>
-   <receiver>Langner_Laskowski_ProjektClass</receiver>
+   <receiver>MainWindowClass</receiver>
    <slot>addButton_clicked()</slot>
    <hints>
     <hint type="sourcelabel">
@@ -154,7 +154,7 @@
   <connection>
    <sender>subb_Button</sender>
    <signal>clicked()</signal>
-   <receiver>Langner_Laskowski_ProjektClass</receiver>
+   <receiver>MainWindowClass</receiver>
    <slot>subbButton_clicked()</slot>
    <hints>
     <hint type="sourcelabel">
