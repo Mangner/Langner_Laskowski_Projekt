@@ -89,11 +89,11 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <QtRcc Include="Langner_Laskowski_Projekt.qrc" />
-    <QtUic Include="Langner_Laskowski_Projekt.ui" />
-    <QtMoc Include="Langner_Laskowski_Projekt.h" />
+    <QtRcc Include="Resources.qrc" />
+    <QtUic Include="UiMainWindow.ui" />
+    <QtMoc Include="TheMainWindow.h" />
     <ClCompile Include="Fishka.cpp" />
-    <ClCompile Include="Langner_Laskowski_Projekt.cpp" />
+    <ClCompile Include="TheMainWindow.cpp" />
     <ClCompile Include="main.cpp" />
   </ItemGroup>
   <ItemGroup>

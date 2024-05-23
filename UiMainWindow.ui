@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
- <class>Langner_Laskowski_ProjektClass</class>
- <widget class="QMainWindow" name="Langner_Laskowski_ProjektClass">
+ <class>UiMainWindowClass</class>
+ <widget class="QMainWindow" name="UiMainWindowClass">
   <property name="geometry">
    <rect>
     <x>0</x>
@@ -119,7 +119,7 @@
      <x>0</x>
      <y>0</y>
      <width>600</width>
-     <height>21</height>
+     <height>22</height>
     </rect>
    </property>
   </widget>
@@ -135,13 +135,13 @@
  </widget>
  <layoutdefault spacing="6" margin="11"/>
  <resources>
-  <include location="Langner_Laskowski_Projekt.qrc"/>
+  <include location="Resources.qrc"/>
  </resources>
  <connections>
   <connection>
    <sender>add_Fishka_Button</sender>
    <signal>clicked()</signal>
-   <receiver>Langner_Laskowski_ProjektClass</receiver>
+   <receiver>UiMainWindowClass</receiver>
    <slot>addButton_clicked()</slot>
    <hints>
     <hint type="sourcelabel">
@@ -157,7 +157,7 @@
   <connection>
    <sender>subb_Fishka_Button</sender>
    <signal>clicked()</signal>
-   <receiver>Langner_Laskowski_ProjektClass</receiver>
+   <receiver>UiMainWindowClass</receiver>
    <slot>subbButton_clicked()</slot>
    <hints>
     <hint type="sourcelabel">
@@ -173,7 +173,7 @@
   <connection>
    <sender>flip_Fishka_Button</sender>
    <signal>clicked()</signal>
-   <receiver>Langner_Laskowski_ProjektClass</receiver>
+   <receiver>UiMainWindowClass</receiver>
    <slot>flipButton_clicked()</slot>
    <hints>
     <hint type="sourcelabel">
@@ -189,7 +189,7 @@
   <connection>
    <sender>Fishka_list_Box</sender>
    <signal>currentIndexChanged(int)</signal>
-   <receiver>Langner_Laskowski_ProjektClass</receiver>
+   <receiver>UiMainWindowClass</receiver>
    <slot>displaySelectedFishka(int)</slot>
    <hints>
     <hint type="sourcelabel">
@@ -205,7 +205,7 @@
   <connection>
    <sender>edit_fishka_Button</sender>
    <signal>clicked()</signal>
-   <receiver>Langner_Laskowski_ProjektClass</receiver>
+   <receiver>UiMainWindowClass</receiver>
    <slot>fishkaEdit_clicked()</slot>
    <hints>
     <hint type="sourcelabel">

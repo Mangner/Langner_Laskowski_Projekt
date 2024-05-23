@@ -1,6 +1,5 @@
 #ifndef FISHCARD_H
 #define FISHCARD_H
-
 #include <QString>
 
 class Fishcard 

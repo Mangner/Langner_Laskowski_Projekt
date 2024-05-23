@@ -1,4 +1,4 @@
-#include "Langner_Laskowski_Projekt.h"
+#include "TheMainWindow.h"
 #include <QMessageBox>
 #include <QInputDialog>
 #include <Qstring>
@@ -8,43 +8,41 @@
 
 
 
-Langner_Laskowski_Projekt::Langner_Laskowski_Projekt(QWidget* parent)
-    : QMainWindow(parent) 
+MainWindow::MainWindow(QWidget* parent) : QMainWindow(parent) 
 {
     ui.setupUi(this);
-    this->setFocusPolicy(Qt::StrongFocus); //mozliwa obs³uga z klawiatury (strza³ki np.)
+    this->setFocusPolicy(Qt::StrongFocus); 
 
-    //czcionka QeditBoxa (mo¿e trzeba zmieniæ boxa na jakiegoœ innego? do wyœwietlania fiszek)
-    ui.fishcard_Box->setStyleSheet("QTextEdit {"
-        "font-size: 24pt;"
-        "font-weight: bold;"
-        "text-align: center;"
-        "}");
+    ui.fishcard_Box->setStyleSheet(
+                                    "QTextEdit {"
+                                    "font-size: 24pt;"
+                                    "font-weight: bold;"
+                                    "text-align: center;"
+                                     "}"
+                                    );
 
-    connect(ui.add_Fishka_Button, &QPushButton::clicked, this, &Langner_Laskowski_Projekt::addFishka);
-    connect(ui.subb_Fishka_Button, &QPushButton::clicked, this, &Langner_Laskowski_Projekt::removeFishka);
-    connect(ui.flip_Fishka_Button, &QPushButton::clicked, this, &Langner_Laskowski_Projekt::flipFishka);
-    connect(ui.Fishka_list_Box, QOverload<int>::of(&QComboBox::currentIndexChanged), this, &Langner_Laskowski_Projekt::displaySelectedFishka);
-    connect(ui.edit_fishka_Button, &QPushButton::clicked, this, &Langner_Laskowski_Projekt::fishkaEdit);
+    connect(ui.add_Fishka_Button, &QPushButton::clicked, this, &MainWindow::addFishka);
+    connect(ui.subb_Fishka_Button, &QPushButton::clicked, this, &MainWindow::removeFishka);
+    connect(ui.flip_Fishka_Button, &QPushButton::clicked, this, &MainWindow::flipFishka);
+    connect(ui.Fishka_list_Box, QOverload<int>::of(&QComboBox::currentIndexChanged), this, &MainWindow::displaySelectedFishka);
+    connect(ui.edit_fishka_Button, &QPushButton::clicked, this, &MainWindow::fishkaEdit);
 
 }
 
 
 
 
-Langner_Laskowski_Projekt::~Langner_Laskowski_Projekt() {}
+MainWindow::~MainWindow() {}
 
 
 
 
-void Langner_Laskowski_Projekt::addFishka()
+void MainWindow::addFishka()
 {
     bool ok;
-    QString front = QInputDialog::getText(this, tr("Nowa Fiszka"),
-        tr("Podaj slowo po polsku:"), QLineEdit::Normal,
-        QString(), &ok).trimmed();  //Trim obs³uguje wpisanie kilku spacji (nie pozwala)
+    QString front = QInputDialog::getText(this, tr("Nowa Fiszka"), tr("Podaj slowo po polsku:"), QLineEdit::Normal, QString(), &ok).trimmed();  
     if (!ok || front.isEmpty())
-        return; //Przerywa przy anulowaniu albo pustym stringu
+        return; 
 
     QString back = QInputDialog::getText(this, tr("Nowa Fiszka"),
         tr("Podaj slowo w innym jezyku:"), QLineEdit::Normal,
@@ -52,23 +50,22 @@ void Langner_Laskowski_Projekt::addFishka()
     if (!ok || back.isEmpty())
         return; 
 
-    // Tworzenie nowej fiszki i dodanie jej do listy
+
     Fishcard newCard(front, back);
     fishcards.append(newCard);
-    ui.Fishka_list_Box->addItem(QString::number(ui.Fishka_list_Box->currentIndex() + 2) + ". " + newCard.front); //DO POPRAWY -> obliczanie indexu przy dodaniu fiszki np. w 2 miejscu gdzie jest 6 fiszek
+    ui.Fishka_list_Box->addItem(QString::number(ui.Fishka_list_Box->currentIndex() + 2) + ". " + newCard.front); 
 
 
-    //format czcionki
+   
     QString text = QString("<div align='center' style='font-size: 24pt; font-weight: bold;'>%1</div>").arg(newCard.front);
     ui.fishcard_Box->setHtml(text);
 
-    ui.Fishka_list_Box->setCurrentIndex(fishcards.size() - 1); //index na najnowszy elem 
-}
+    ui.Fishka_list_Box->setCurrentIndex(fishcards.size() - 1); }
 
 
 
 
-void Langner_Laskowski_Projekt::displaySelectedFishka(int index)
+void MainWindow::displaySelectedFishka(int index)
 {
     if (index >= 0 && index < fishcards.size()) 
     {
@@ -81,7 +78,7 @@ void Langner_Laskowski_Projekt::displaySelectedFishka(int index)
 
 
 
-void Langner_Laskowski_Projekt::removeFishka() 
+void MainWindow::removeFishka() 
 {
     int currentIndex = ui.Fishka_list_Box->currentIndex();
     if (currentIndex != -1) 
@@ -94,7 +91,7 @@ void Langner_Laskowski_Projekt::removeFishka()
 
 
 
-void Langner_Laskowski_Projekt::flipFishka()
+void MainWindow::flipFishka()
 {
     int currentIndex = ui.Fishka_list_Box->currentIndex();
     if (currentIndex != -1)
@@ -108,7 +105,7 @@ void Langner_Laskowski_Projekt::flipFishka()
 
 
 
-void Langner_Laskowski_Projekt::fishkaEdit()
+void MainWindow::fishkaEdit()
 {
     int currentIndex = ui.Fishka_list_Box->currentIndex();
     if (currentIndex == -1)
@@ -143,7 +140,7 @@ void Langner_Laskowski_Projekt::fishkaEdit()
 
 
 
-void Langner_Laskowski_Projekt::editFishkaPart(int index, bool editFront, bool editBack)
+void MainWindow::editFishkaPart(int index, bool editFront, bool editBack)
 {
     if (index < 0 || index >= fishcards.size()) return;
 
@@ -166,7 +163,7 @@ void Langner_Laskowski_Projekt::editFishkaPart(int index, bool editFront, bool e
 
 
 
-void Langner_Laskowski_Projekt::keyPressEvent(QKeyEvent* event)
+void MainWindow::keyPressEvent(QKeyEvent* event)
 {
     int currentIndex = ui.Fishka_list_Box->currentIndex();
     int itemCount = ui.Fishka_list_Box->count();

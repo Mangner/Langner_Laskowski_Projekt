@@ -1,10 +1,11 @@
-#include "Langner_Laskowski_Projekt.h"
+#include "TheMainWindow.h"
 #include <QtWidgets/QApplication>
 
 int main(int argc, char *argv[])
 {
-    QApplication a(argc, argv);
-    Langner_Laskowski_Projekt w;
-    w.show();
-    return a.exec();
+    QApplication Application(argc, argv);
+    MainWindow Window;
+
+    Window.show();
+    return Application.exec();
 }

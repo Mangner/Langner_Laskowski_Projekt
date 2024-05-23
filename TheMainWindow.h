@@ -3,16 +3,16 @@
 
 #include <QMainWindow>
 #include <QList>
-#include "ui_Langner_Laskowski_Projekt.h"
+#include "ui_UiMainWindow.h"
 #include "Fishcard.h"
 
-class Langner_Laskowski_Projekt : public QMainWindow 
+class MainWindow : public QMainWindow 
 {
     Q_OBJECT
 
 public:
-    explicit Langner_Laskowski_Projekt(QWidget* parent = nullptr);
-    ~Langner_Laskowski_Projekt();
+    explicit MainWindow(QWidget* parent = nullptr);
+    ~MainWindow();
 
 private slots:
     void addFishka();
@@ -27,7 +27,7 @@ protected:
     
 
 private:
-    Ui::Langner_Laskowski_ProjektClass ui;
+    Ui::UiMainWindowClass ui;
     QList<Fishcard> fishcards;
 };
 
