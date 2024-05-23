@@ -99,6 +99,19 @@
      <string>Lista Fiszek</string>
     </property>
    </widget>
+   <widget class="QPushButton" name="edit_fishka_Button">
+    <property name="geometry">
+     <rect>
+      <x>460</x>
+      <y>140</y>
+      <width>80</width>
+      <height>24</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Edytuj fiszkę</string>
+    </property>
+   </widget>
   </widget>
   <widget class="QMenuBar" name="menuBar">
    <property name="geometry">
@@ -189,11 +202,28 @@
     </hint>
    </hints>
   </connection>
+  <connection>
+   <sender>edit_fishka_Button</sender>
+   <signal>clicked()</signal>
+   <receiver>Langner_Laskowski_ProjektClass</receiver>
+   <slot>fishkaEdit_clicked()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>475</x>
+     <y>186</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>439</x>
+     <y>328</y>
+    </hint>
+   </hints>
+  </connection>
  </connections>
  <slots>
   <slot>addButton_clicked()</slot>
   <slot>subbButton_clicked()</slot>
   <slot>flipButton_clicked()</slot>
   <slot>displaySelectedFishka(int)</slot>
+  <slot>fishkaEdit_clicked()</slot>
  </slots>
 </ui>

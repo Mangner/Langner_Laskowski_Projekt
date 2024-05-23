@@ -19,6 +19,12 @@ private slots:
     void removeFishka();
     void flipFishka();
     void displaySelectedFishka(int index);
+    void fishkaEdit();
+    void editFishkaPart(int index, bool editFront, bool editBack);
+   
+protected:
+    void keyPressEvent(QKeyEvent* event) override;
+    
 
 private:
     Ui::Langner_Laskowski_ProjektClass ui;

@@ -2,6 +2,8 @@
 #include <QMessageBox>
 #include <QInputDialog>
 #include <Qstring>
+#include <QAbstractButton>
+#include <QKeyEvent>
 
 
 
@@ -10,6 +12,7 @@ Langner_Laskowski_Projekt::Langner_Laskowski_Projekt(QWidget* parent)
     : QMainWindow(parent) 
 {
     ui.setupUi(this);
+    this->setFocusPolicy(Qt::StrongFocus); //mozliwa obs³uga z klawiatury (strza³ki np.)
 
     //czcionka QeditBoxa (mo¿e trzeba zmieniæ boxa na jakiegoœ innego? do wyœwietlania fiszek)
     ui.fishcard_Box->setStyleSheet("QTextEdit {"
@@ -22,6 +25,8 @@ Langner_Laskowski_Projekt::Langner_Laskowski_Projekt(QWidget* parent)
     connect(ui.subb_Fishka_Button, &QPushButton::clicked, this, &Langner_Laskowski_Projekt::removeFishka);
     connect(ui.flip_Fishka_Button, &QPushButton::clicked, this, &Langner_Laskowski_Projekt::flipFishka);
     connect(ui.Fishka_list_Box, QOverload<int>::of(&QComboBox::currentIndexChanged), this, &Langner_Laskowski_Projekt::displaySelectedFishka);
+    connect(ui.edit_fishka_Button, &QPushButton::clicked, this, &Langner_Laskowski_Projekt::fishkaEdit);
+
 }
 
 
@@ -99,3 +104,100 @@ void Langner_Laskowski_Projekt::flipFishka()
         ui.fishcard_Box->setHtml(text);
     }
 }
+
+
+
+
+void Langner_Laskowski_Projekt::fishkaEdit()
+{
+    int currentIndex = ui.Fishka_list_Box->currentIndex();
+    if (currentIndex == -1)
+    {
+        QMessageBox::warning(this, tr("Edycja fiszki"), tr("Nie wybrano zadnej fiszki."));
+        return;
+    }
+
+    QMessageBox msgBox;
+    msgBox.setWindowTitle(tr("Edytuj fiszke"));
+    msgBox.setText(tr("Wybierz co chcesz edytowac:"));
+    msgBox.addButton(tr("Edytuj front"), QMessageBox::ActionRole);
+    msgBox.addButton(tr("Edytuj back"), QMessageBox::ActionRole);
+    msgBox.addButton(tr("Edytuj oba"), QMessageBox::ActionRole);
+
+    int result = msgBox.exec();
+
+    switch (result) 
+    {
+    case 0:  
+        editFishkaPart(currentIndex, true, false);
+        break;
+    case 1:  
+        editFishkaPart(currentIndex, false, true);
+        break;
+    case 2:  
+        editFishkaPart(currentIndex, true, true);
+        break;
+    }
+}
+
+
+
+
+void Langner_Laskowski_Projekt::editFishkaPart(int index, bool editFront, bool editBack)
+{
+    if (index < 0 || index >= fishcards.size()) return;
+
+    Fishcard& card = fishcards[index];
+    bool ok;
+    if (editFront) 
+    {
+        QString newFront = QInputDialog::getText(this, tr("Edycja fiszki"), tr("Nowy front:"), QLineEdit::Normal, card.front, &ok).trimmed();
+        if (ok && !newFront.isEmpty()) card.front = newFront;
+    }
+    if (editBack) 
+    {
+        QString newBack = QInputDialog::getText(this, tr("Edycja fiszki"), tr("Nowy back:"), QLineEdit::Normal, card.back, &ok).trimmed();
+        if (ok && !newBack.isEmpty()) card.back = newBack;
+    }
+
+    ui.Fishka_list_Box->setItemText(index, card.front);
+    displaySelectedFishka(index); 
+}
+
+
+
+void Langner_Laskowski_Projekt::keyPressEvent(QKeyEvent* event)
+{
+    int currentIndex = ui.Fishka_list_Box->currentIndex();
+    int itemCount = ui.Fishka_list_Box->count();
+
+    switch (event->key()) 
+    {
+    case Qt::Key_Left:
+        if (currentIndex > 0) 
+        {
+            ui.Fishka_list_Box->setCurrentIndex(currentIndex - 1);
+        }
+        break;
+
+    case Qt::Key_Right:
+        if (currentIndex < itemCount - 1) 
+        {
+            ui.Fishka_list_Box->setCurrentIndex(currentIndex + 1);
+        }
+        break;
+
+    case Qt::Key_F:  //do obrotu fiszki
+        flipFishka();
+        break;
+
+    default:
+        QMainWindow::keyPressEvent(event);
+    }
+}
+
+
+
+
+
+

@@ -9,3 +9,6 @@ void Fishcard::flip()
     this->front = this->back;
     this->back = temp;
 }
+
+
+
