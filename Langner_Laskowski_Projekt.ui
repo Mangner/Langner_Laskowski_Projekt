@@ -14,99 +14,102 @@
    <string>Langner_Laskowski_Projekt</string>
   </property>
   <widget class="QWidget" name="centralWidget">
-   <widget class="QPushButton" name="add_Button">
+   <widget class="QPushButton" name="add_Fishka_Button">
     <property name="geometry">
      <rect>
-      <x>330</x>
-      <y>60</y>
+      <x>170</x>
+      <y>230</y>
       <width>75</width>
       <height>24</height>
      </rect>
     </property>
     <property name="text">
-     <string>Dodaj</string>
+     <string>Dodaj fiszkę</string>
     </property>
    </widget>
-   <widget class="QTextEdit" name="enter_A">
+   <widget class="QLabel" name="fishka_Label">
     <property name="geometry">
      <rect>
-      <x>80</x>
-      <y>40</y>
-      <width>104</width>
-      <height>71</height>
-     </rect>
-    </property>
-   </widget>
-   <widget class="QTextEdit" name="enter_B">
-    <property name="geometry">
-     <rect>
-      <x>210</x>
-      <y>40</y>
-      <width>104</width>
-      <height>71</height>
-     </rect>
-    </property>
-   </widget>
-   <widget class="QLabel" name="result_Label">
-    <property name="geometry">
-     <rect>
-      <x>450</x>
-      <y>20</y>
+      <x>260</x>
+      <y>70</y>
       <width>49</width>
       <height>16</height>
      </rect>
     </property>
     <property name="text">
-     <string>Wynik</string>
+     <string>Fiszka</string>
     </property>
    </widget>
-   <widget class="QTextEdit" name="result_Box">
+   <widget class="QTextEdit" name="fishcard_Box">
     <property name="geometry">
      <rect>
-      <x>420</x>
-      <y>40</y>
-      <width>104</width>
-      <height>71</height>
-     </rect>
-    </property>
-   </widget>
-   <widget class="QLabel" name="first_number_label">
-    <property name="geometry">
-     <rect>
-      <x>100</x>
-      <y>20</y>
-      <width>71</width>
-      <height>16</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>First Number</string>
-    </property>
-   </widget>
-   <widget class="QLabel" name="second_number_label">
-    <property name="geometry">
-     <rect>
-      <x>220</x>
-      <y>20</y>
-      <width>91</width>
-      <height>16</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>Second Number</string>
-    </property>
-   </widget>
-   <widget class="QPushButton" name="subb_Button">
-    <property name="geometry">
-     <rect>
-      <x>330</x>
+      <x>133</x>
       <y>90</y>
+      <width>311</width>
+      <height>101</height>
+     </rect>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="subb_Fishka_Button">
+    <property name="geometry">
+     <rect>
+      <x>320</x>
+      <y>230</y>
       <width>75</width>
       <height>24</height>
      </rect>
     </property>
     <property name="text">
-     <string>Odejmij</string>
+     <string>Usuń fiszkę</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="flip_Fishka_Button">
+    <property name="geometry">
+     <rect>
+      <x>460</x>
+      <y>90</y>
+      <width>81</width>
+      <height>41</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string> Obróć fiszkę</string>
+    </property>
+   </widget>
+   <widget class="QComboBox" name="Fishka_list_Box">
+    <property name="geometry">
+     <rect>
+      <x>31</x>
+      <y>90</y>
+      <width>101</width>
+      <height>24</height>
+     </rect>
+    </property>
+   </widget>
+   <widget class="QLabel" name="fishcard_List_Label">
+    <property name="geometry">
+     <rect>
+      <x>50</x>
+      <y>70</y>
+      <width>71</width>
+      <height>20</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Lista Fiszek</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="edit_fishka_Button">
+    <property name="geometry">
+     <rect>
+      <x>460</x>
+      <y>140</y>
+      <width>80</width>
+      <height>24</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Edytuj fiszkę</string>
     </property>
    </widget>
   </widget>
@@ -116,7 +119,7 @@
      <x>0</x>
      <y>0</y>
      <width>600</width>
-     <height>22</height>
+     <height>21</height>
     </rect>
    </property>
   </widget>
@@ -136,14 +139,14 @@
  </resources>
  <connections>
   <connection>
-   <sender>add_Button</sender>
+   <sender>add_Fishka_Button</sender>
    <signal>clicked()</signal>
    <receiver>Langner_Laskowski_ProjektClass</receiver>
    <slot>addButton_clicked()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>367</x>
-     <y>105</y>
+     <x>207</x>
+     <y>275</y>
     </hint>
     <hint type="destinationlabel">
      <x>299</x>
@@ -152,14 +155,14 @@
    </hints>
   </connection>
   <connection>
-   <sender>subb_Button</sender>
+   <sender>subb_Fishka_Button</sender>
    <signal>clicked()</signal>
    <receiver>Langner_Laskowski_ProjektClass</receiver>
    <slot>subbButton_clicked()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>388</x>
-     <y>135</y>
+     <x>378</x>
+     <y>275</y>
     </hint>
     <hint type="destinationlabel">
      <x>457</x>
@@ -167,9 +170,60 @@
     </hint>
    </hints>
   </connection>
+  <connection>
+   <sender>flip_Fishka_Button</sender>
+   <signal>clicked()</signal>
+   <receiver>Langner_Laskowski_ProjektClass</receiver>
+   <slot>flipButton_clicked()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>490</x>
+     <y>149</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>516</x>
+     <y>247</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>Fishka_list_Box</sender>
+   <signal>currentIndexChanged(int)</signal>
+   <receiver>Langner_Laskowski_ProjektClass</receiver>
+   <slot>displaySelectedFishka(int)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>100</x>
+     <y>134</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>97</x>
+     <y>253</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>edit_fishka_Button</sender>
+   <signal>clicked()</signal>
+   <receiver>Langner_Laskowski_ProjektClass</receiver>
+   <slot>fishkaEdit_clicked()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>475</x>
+     <y>186</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>439</x>
+     <y>328</y>
+    </hint>
+   </hints>
+  </connection>
  </connections>
  <slots>
   <slot>addButton_clicked()</slot>
   <slot>subbButton_clicked()</slot>
+  <slot>flipButton_clicked()</slot>
+  <slot>displaySelectedFishka(int)</slot>
+  <slot>fishkaEdit_clicked()</slot>
  </slots>
 </ui>
