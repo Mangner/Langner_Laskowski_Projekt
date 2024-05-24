@@ -165,12 +165,12 @@ void MainWindow::editFishkaPart(int index, bool editFront, bool editBack)
     if (editFront) 
     {
         QString newFront = QInputDialog::getText(this, tr("Edycja fiszki"), tr("Nowy front:"), QLineEdit::Normal, card.getFront(), &ok).trimmed();
-        if (ok && !newFront.isEmpty()) card.getFront() = newFront;
+        if (ok && !newFront.isEmpty()) card.setFront(newFront);
     }
     if (editBack) 
     {
         QString newBack = QInputDialog::getText(this, tr("Edycja fiszki"), tr("Nowy back:"), QLineEdit::Normal, card.getBack(), &ok).trimmed();
-        if (ok && !newBack.isEmpty()) card.getBack() = newBack;
+        if (ok && !newBack.isEmpty()) card.setBack(newBack);
     }
 
     ui.Fishka_list_Box->setItemText(index, card.getFront());

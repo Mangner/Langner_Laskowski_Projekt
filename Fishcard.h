@@ -11,8 +11,10 @@ private:
 
 public:
     Fishcard(const QString& front, const QString& back);
-    QString getFront();
-    QString getBack();
+    QString getFront() const;
+    QString getBack() const;
+    void setFront(QString newFront);
+    void setBack(QString newBack);
 };
 
 
