@@ -1,3 +1,4 @@
+#pragma once
 #include <QMainWindow>
 #include <QList>
 #include "ui_UiMainWindow.h"
@@ -19,6 +20,10 @@ private slots:
     void fishkaEdit();
     void editFishkaPart(int index, bool editFront, bool editBack);
    
+
+    void loadFishCards();
+    void checkIfDuplicate();
+
 protected:
     void keyPressEvent(QKeyEvent* event) override;
     

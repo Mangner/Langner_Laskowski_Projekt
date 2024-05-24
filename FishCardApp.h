@@ -1,6 +1,6 @@
 #pragma once
 #include <QString>
-
+#include "TheMainWindow.h"
 
 class Fishcard
 {
@@ -13,6 +13,9 @@ public:
     Fishcard(const QString& front, const QString& back);
     QString getFront();
     QString getBack();
+
+    void addFishcard(MainWindow& window);
+
 };
 
 

@@ -92,6 +92,7 @@
     <QtRcc Include="Resources.qrc" />
     <QtUic Include="UiMainWindow.ui" />
     <QtMoc Include="TheMainWindow.h" />
+    <ClCompile Include="AssistantOptions.cpp" />
     <ClCompile Include="Fishka.cpp" />
     <ClCompile Include="TheMainWindow.cpp" />
     <ClCompile Include="main.cpp" />
@@ -100,7 +101,7 @@
     <ClInclude Include="Fishcard.h" />
   </ItemGroup>
   <ItemGroup>
-    <Text Include="Fiszki.txt" />
+    <Text Include="fishCards.txt" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Condition="Exists('$(QtMsBuild)\qt.targets')">

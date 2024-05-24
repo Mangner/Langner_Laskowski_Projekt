@@ -1,25 +1,26 @@
 #include "TheMainWindow.h"
 #include <QMessageBox>
 #include <QInputDialog>
-#include <Qstring>
 #include <QAbstractButton>
 #include <QKeyEvent>
+#include <iostream>
 #include <fstream>
 
 
 
-MainWindow::MainWindow(QWidget* parent) : QMainWindow(parent) 
+
+MainWindow::MainWindow(QWidget* parent) : QMainWindow(parent)
 {
     ui.setupUi(this);
-    this->setFocusPolicy(Qt::StrongFocus); 
+    this->setFocusPolicy(Qt::StrongFocus);
 
     ui.fishcard_Box->setStyleSheet(
-                                    "QTextEdit {"
-                                    "font-size: 24pt;"
-                                    "font-weight: bold;"
-                                    "text-align: center;"
-                                     "}"
-                                    );
+        "QTextEdit {"
+        "font-size: 24pt;"
+        "font-weight: bold;"
+        "text-align: center;"
+        "}"
+    );
 
     connect(ui.add_Fishka_Button, &QPushButton::clicked, this, &MainWindow::addFishka);
     connect(ui.subb_Fishka_Button, &QPushButton::clicked, this, &MainWindow::removeFishka);
@@ -27,6 +28,7 @@ MainWindow::MainWindow(QWidget* parent) : QMainWindow(parent)
     connect(ui.Fishka_list_Box, QOverload<int>::of(&QComboBox::currentIndexChanged), this, &MainWindow::displaySelectedFishka);
     connect(ui.edit_fishka_Button, &QPushButton::clicked, this, &MainWindow::fishkaEdit);
 
+    this->loadFishCards();
 }
 
 
@@ -49,16 +51,24 @@ void MainWindow::addFishka()
         return; 
     
 
+    
+
+
     Fishcard newCard(front, back);
     fishcards.append(newCard);
     ui.Fishka_list_Box->addItem(QString::number(ui.Fishka_list_Box->currentIndex() + 2) + ". " + newCard.getFront()); 
 
-    
    
     QString text = QString("<div align='center' style='font-size: 24pt; font-weight: bold;'>%1</div>").arg(newCard.getFront());
     ui.fishcard_Box->setHtml(text);
 
     ui.Fishka_list_Box->setCurrentIndex(fishcards.size() - 1); 
+
+   
+    std::ofstream FishCardsSet("fishCards.txt",std::ios::app);
+    FishCardsSet << (newCard.getFront()).toStdString() << ":" << (newCard.getBack()).toStdString() << std::endl;
+    FishCardsSet.close();
+
 }
 
 

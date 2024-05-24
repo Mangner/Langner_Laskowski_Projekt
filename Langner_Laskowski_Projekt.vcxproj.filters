@@ -37,6 +37,9 @@
     <ClCompile Include="main.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="AssistantOptions.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Fishcard.h">
@@ -54,7 +57,7 @@
     </QtUic>
   </ItemGroup>
   <ItemGroup>
-    <Text Include="Fiszki.txt">
+    <Text Include="fishCards.txt">
       <Filter>Resource Files</Filter>
     </Text>
   </ItemGroup>
