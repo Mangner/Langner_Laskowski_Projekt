@@ -14,104 +14,56 @@
    <string>Langner_Laskowski_Projekt</string>
   </property>
   <widget class="QWidget" name="centralWidget">
-   <widget class="QPushButton" name="add_Fishka_Button">
-    <property name="geometry">
-     <rect>
-      <x>170</x>
-      <y>230</y>
-      <width>75</width>
-      <height>24</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>Dodaj fiszkę</string>
-    </property>
-   </widget>
-   <widget class="QLabel" name="fishka_Label">
-    <property name="geometry">
-     <rect>
-      <x>260</x>
-      <y>70</y>
-      <width>49</width>
-      <height>16</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>Fiszka</string>
-    </property>
-   </widget>
-   <widget class="QTextEdit" name="fishcard_Box">
-    <property name="geometry">
-     <rect>
-      <x>133</x>
-      <y>90</y>
-      <width>311</width>
-      <height>101</height>
-     </rect>
-    </property>
-   </widget>
-   <widget class="QPushButton" name="subb_Fishka_Button">
-    <property name="geometry">
-     <rect>
-      <x>320</x>
-      <y>230</y>
-      <width>75</width>
-      <height>24</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>Usuń fiszkę</string>
-    </property>
-   </widget>
-   <widget class="QPushButton" name="flip_Fishka_Button">
-    <property name="geometry">
-     <rect>
-      <x>460</x>
-      <y>90</y>
-      <width>81</width>
-      <height>41</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string> Obróć fiszkę</string>
-    </property>
-   </widget>
-   <widget class="QComboBox" name="Fishka_list_Box">
-    <property name="geometry">
-     <rect>
-      <x>31</x>
-      <y>90</y>
-      <width>101</width>
-      <height>24</height>
-     </rect>
-    </property>
-   </widget>
-   <widget class="QLabel" name="fishcard_List_Label">
-    <property name="geometry">
-     <rect>
-      <x>50</x>
-      <y>70</y>
-      <width>71</width>
-      <height>20</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>Lista Fiszek</string>
-    </property>
-   </widget>
-   <widget class="QPushButton" name="edit_fishka_Button">
-    <property name="geometry">
-     <rect>
-      <x>460</x>
-      <y>140</y>
-      <width>80</width>
-      <height>24</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>Edytuj fiszkę</string>
-    </property>
-   </widget>
+   <layout class="QVBoxLayout" name="verticalLayout">
+    <item>
+     <widget class="QLabel" name="fishcard_List_Label">
+      <property name="text">
+       <string>Lista Fiszek</string>
+      </property>
+     </widget>
+    </item>
+    <item>
+     <widget class="QLabel" name="fishka_Label">
+      <property name="text">
+       <string>Fiszka</string>
+      </property>
+     </widget>
+    </item>
+    <item>
+     <widget class="QComboBox" name="Fishka_list_Box"/>
+    </item>
+    <item>
+     <widget class="QTextEdit" name="fishcard_Box"/>
+    </item>
+    <item>
+     <widget class="QPushButton" name="flip_Fishka_Button">
+      <property name="text">
+       <string> Obróć fiszkę</string>
+      </property>
+     </widget>
+    </item>
+    <item>
+     <widget class="QPushButton" name="edit_fishka_Button">
+      <property name="text">
+       <string>Edytuj fiszkę</string>
+      </property>
+     </widget>
+    </item>
+    <item>
+     <widget class="QPushButton" name="add_Fishka_Button">
+      <property name="text">
+       <string>Dodaj fiszkę</string>
+      </property>
+     </widget>
+    </item>
+    <item>
+     <widget class="QPushButton" name="subb_Fishka_Button">
+      <property name="text">
+       <string>Usuń fiszkę</string>
+      </property>
+     </widget>
+    </item>
+   </layout>
   </widget>
   <widget class="QMenuBar" name="menuBar">
    <property name="geometry">

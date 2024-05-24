@@ -1,6 +1,3 @@
-#ifndef LANGNER_LASKOWSKI_PROJEKT_H
-#define LANGNER_LASKOWSKI_PROJEKT_H
-
 #include <QMainWindow>
 #include <QList>
 #include "ui_UiMainWindow.h"
@@ -31,4 +28,4 @@ private:
     QList<Fishcard> fishcards;
 };
 
-#endif 
+

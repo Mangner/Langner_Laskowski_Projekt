@@ -4,7 +4,7 @@
 #include <Qstring>
 #include <QAbstractButton>
 #include <QKeyEvent>
-
+#include <fstream>
 
 
 
@@ -40,27 +40,26 @@ MainWindow::~MainWindow() {}
 void MainWindow::addFishka()
 {
     bool ok;
-    QString front = QInputDialog::getText(this, tr("Nowa Fiszka"), tr("Podaj slowo po polsku:"), QLineEdit::Normal, QString(), &ok).trimmed();  
+    QString front = QInputDialog::getText(this, tr("Nowa Fiszka"), tr("Podaj s³owo po polsku:"), QLineEdit::Normal, QString(), &ok).trimmed();
     if (!ok || front.isEmpty())
         return; 
 
-    QString back = QInputDialog::getText(this, tr("Nowa Fiszka"),
-        tr("Podaj slowo w innym jezyku:"), QLineEdit::Normal,
-        QString(), &ok).trimmed();  
+    QString back = QInputDialog::getText(this, tr("Nowa Fiszka"), tr("Podaj s³owo w innym jêzyku:"), QLineEdit::Normal, QString(), &ok).trimmed();
     if (!ok || back.isEmpty())
         return; 
-
+    
 
     Fishcard newCard(front, back);
     fishcards.append(newCard);
-    ui.Fishka_list_Box->addItem(QString::number(ui.Fishka_list_Box->currentIndex() + 2) + ". " + newCard.front); 
+    ui.Fishka_list_Box->addItem(QString::number(ui.Fishka_list_Box->currentIndex() + 2) + ". " + newCard.getFront()); 
 
-
+    
    
-    QString text = QString("<div align='center' style='font-size: 24pt; font-weight: bold;'>%1</div>").arg(newCard.front);
+    QString text = QString("<div align='center' style='font-size: 24pt; font-weight: bold;'>%1</div>").arg(newCard.getFront());
     ui.fishcard_Box->setHtml(text);
 
-    ui.Fishka_list_Box->setCurrentIndex(fishcards.size() - 1); }
+    ui.Fishka_list_Box->setCurrentIndex(fishcards.size() - 1); 
+}
 
 
 
@@ -70,7 +69,7 @@ void MainWindow::displaySelectedFishka(int index)
     if (index >= 0 && index < fishcards.size()) 
     {
         Fishcard selectedCard = fishcards[index];
-        QString text = QString("<div align='center' style='font-size: 24pt; font-weight: bold;'>%1</div>").arg(selectedCard.front);
+        QString text = QString("<div align='center' style='font-size: 24pt; font-weight: bold;'>%1</div>").arg(selectedCard.getFront());
         ui.fishcard_Box->setHtml(text);
     }
 }
@@ -96,9 +95,16 @@ void MainWindow::flipFishka()
     int currentIndex = ui.Fishka_list_Box->currentIndex();
     if (currentIndex != -1)
     {
-        fishcards[currentIndex].flip();
-        QString text = QString("<div align='center' style='font-size: 24pt; font-weight: bold;'>%1</div>").arg(fishcards[currentIndex].front);
-        ui.fishcard_Box->setHtml(text);
+        if (ui.fishcard_Box->toPlainText() == fishcards[currentIndex].getBack())
+        {
+            QString text = QString("<div align='center' style='font-size: 24pt; font-weight: bold;'>%1</div>").arg(fishcards[currentIndex].getFront());
+            ui.fishcard_Box->setHtml(text);
+        }
+        else
+        {
+            QString text = QString("<div align='center' style='font-size: 24pt; font-weight: bold;'>%1</div>").arg(fishcards[currentIndex].getBack());
+            ui.fishcard_Box->setHtml(text);
+        }
     }
 }
 
@@ -148,18 +154,19 @@ void MainWindow::editFishkaPart(int index, bool editFront, bool editBack)
     bool ok;
     if (editFront) 
     {
-        QString newFront = QInputDialog::getText(this, tr("Edycja fiszki"), tr("Nowy front:"), QLineEdit::Normal, card.front, &ok).trimmed();
-        if (ok && !newFront.isEmpty()) card.front = newFront;
+        QString newFront = QInputDialog::getText(this, tr("Edycja fiszki"), tr("Nowy front:"), QLineEdit::Normal, card.getFront(), &ok).trimmed();
+        if (ok && !newFront.isEmpty()) card.getFront() = newFront;
     }
     if (editBack) 
     {
-        QString newBack = QInputDialog::getText(this, tr("Edycja fiszki"), tr("Nowy back:"), QLineEdit::Normal, card.back, &ok).trimmed();
-        if (ok && !newBack.isEmpty()) card.back = newBack;
+        QString newBack = QInputDialog::getText(this, tr("Edycja fiszki"), tr("Nowy back:"), QLineEdit::Normal, card.getBack(), &ok).trimmed();
+        if (ok && !newBack.isEmpty()) card.getBack() = newBack;
     }
 
-    ui.Fishka_list_Box->setItemText(index, card.front);
+    ui.Fishka_list_Box->setItemText(index, card.getFront());
     displaySelectedFishka(index); 
 }
+
 
 
 
@@ -184,7 +191,7 @@ void MainWindow::keyPressEvent(QKeyEvent* event)
         }
         break;
 
-    case Qt::Key_F:  //do obrotu fiszki
+    case Qt::Key_F:  
         flipFishka();
         break;
 

@@ -2,14 +2,19 @@
 #define FISHCARD_H
 #include <QString>
 
-class Fishcard 
+
+class Fishcard
 {
-public:
+
+private:
     QString front;
     QString back;
 
+public:
     Fishcard(const QString& front, const QString& back);
-    void flip();
+    QString getFront();
+    QString getBack();
+    void addFishcard();
 };
 
 #endif

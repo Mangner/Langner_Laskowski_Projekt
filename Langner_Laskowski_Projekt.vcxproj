@@ -99,6 +99,9 @@
   <ItemGroup>
     <ClInclude Include="Fishcard.h" />
   </ItemGroup>
+  <ItemGroup>
+    <Text Include="Fiszki.txt" />
+  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Condition="Exists('$(QtMsBuild)\qt.targets')">
     <Import Project="$(QtMsBuild)\qt.targets" />
