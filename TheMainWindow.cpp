@@ -66,7 +66,6 @@ void MainWindow::addFishka()
     FishCardsSet << newCard.getFront().toStdString() << ":" << newCard.getBack().toStdString() << std::endl;
     FishCardsSet.close();
 
-    // Display success message
     QMessageBox::information(this, tr("Nowa Fiszka"), tr("Poprawnie dodano fiszke."));
 }
 
