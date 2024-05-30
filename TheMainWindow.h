@@ -19,10 +19,9 @@ private slots:
     void displaySelectedFishka(int index);
     void fishkaEdit();
     void editFishkaPart(int index, bool editFront, bool editBack);
-   
-
     void loadFishCards();
     void checkIfDuplicate();
+    void relax();
 
 protected:
     void keyPressEvent(QKeyEvent* event) override;

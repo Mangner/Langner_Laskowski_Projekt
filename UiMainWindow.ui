@@ -23,14 +23,14 @@
      </widget>
     </item>
     <item>
+     <widget class="QComboBox" name="Fishka_list_Box"/>
+    </item>
+    <item>
      <widget class="QLabel" name="fishka_Label">
       <property name="text">
        <string>Fiszka</string>
       </property>
      </widget>
-    </item>
-    <item>
-     <widget class="QComboBox" name="Fishka_list_Box"/>
     </item>
     <item>
      <widget class="QTextEdit" name="fishcard_Box"/>
@@ -63,6 +63,13 @@
       </property>
      </widget>
     </item>
+    <item>
+     <widget class="QPushButton" name="pedroButton">
+      <property name="text">
+       <string>Zrelaksuj się :D</string>
+      </property>
+     </widget>
+    </item>
    </layout>
   </widget>
   <widget class="QMenuBar" name="menuBar">
@@ -71,7 +78,7 @@
      <x>0</x>
      <y>0</y>
      <width>600</width>
-     <height>22</height>
+     <height>21</height>
     </rect>
    </property>
   </widget>
@@ -97,8 +104,8 @@
    <slot>addButton_clicked()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>207</x>
-     <y>275</y>
+     <x>216</x>
+     <y>308</y>
     </hint>
     <hint type="destinationlabel">
      <x>299</x>
@@ -113,8 +120,8 @@
    <slot>subbButton_clicked()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>378</x>
-     <y>275</y>
+     <x>387</x>
+     <y>338</y>
     </hint>
     <hint type="destinationlabel">
      <x>457</x>
@@ -129,8 +136,8 @@
    <slot>flipButton_clicked()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>490</x>
-     <y>149</y>
+     <x>499</x>
+     <y>248</y>
     </hint>
     <hint type="destinationlabel">
      <x>516</x>
@@ -145,8 +152,8 @@
    <slot>displaySelectedFishka(int)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>100</x>
-     <y>134</y>
+     <x>109</x>
+     <y>92</y>
     </hint>
     <hint type="destinationlabel">
      <x>97</x>
@@ -161,12 +168,28 @@
    <slot>fishkaEdit_clicked()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>475</x>
-     <y>186</y>
+     <x>484</x>
+     <y>278</y>
     </hint>
     <hint type="destinationlabel">
      <x>439</x>
      <y>328</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>pedroButton</sender>
+   <signal>clicked()</signal>
+   <receiver>UiMainWindowClass</receiver>
+   <slot>pedroButton_clicked()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>281</x>
+     <y>361</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>277</x>
+     <y>371</y>
     </hint>
    </hints>
   </connection>
@@ -177,5 +200,6 @@
   <slot>flipButton_clicked()</slot>
   <slot>displaySelectedFishka(int)</slot>
   <slot>fishkaEdit_clicked()</slot>
+  <slot>pedroButton_clicked()</slot>
  </slots>
 </ui>
