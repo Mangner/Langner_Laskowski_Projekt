@@ -1,6 +1,2 @@
-Dupa:Ass
-Dick:Huj
-Cipa:Pussy
-Kot:Cat
-NOWY:NEW
-andrzej:andrew
+solidny:robust
+slowo:word

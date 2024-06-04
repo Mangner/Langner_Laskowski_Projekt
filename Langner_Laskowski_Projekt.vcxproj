@@ -92,7 +92,7 @@
     <QtRcc Include="Resources.qrc" />
     <QtUic Include="UiMainWindow.ui" />
     <QtMoc Include="TheMainWindow.h" />
-    <ClCompile Include="AssistantOptions.cpp" />
+    <ClCompile Include="FishkaFuncs.cpp" />
     <ClCompile Include="Fishka.cpp" />
     <ClCompile Include="TheMainWindow.cpp" />
     <ClCompile Include="main.cpp" />
