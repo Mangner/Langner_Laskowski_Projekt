@@ -23,14 +23,14 @@
      </widget>
     </item>
     <item>
+     <widget class="QComboBox" name="Fishka_list_Box"/>
+    </item>
+    <item>
      <widget class="QLabel" name="fishka_Label">
       <property name="text">
        <string>Fiszka</string>
       </property>
      </widget>
-    </item>
-    <item>
-     <widget class="QComboBox" name="Fishka_list_Box"/>
     </item>
     <item>
      <widget class="QTextEdit" name="fishcard_Box"/>
@@ -71,7 +71,7 @@
      <x>0</x>
      <y>0</y>
      <width>600</width>
-     <height>22</height>
+     <height>21</height>
     </rect>
    </property>
   </widget>

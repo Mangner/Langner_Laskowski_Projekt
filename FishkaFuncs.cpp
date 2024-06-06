@@ -14,11 +14,11 @@
 void MainWindow::addFishka()
 {
     bool ok;
-    QString front = QInputDialog::getText(this, tr("Nowa Fiszka"), tr("Podaj s³owo po polsku:"), QLineEdit::Normal, QString(), &ok).trimmed();
+    QString front = QInputDialog::getText(this, tr("New Fishcard"), tr("Input word in polish:"), QLineEdit::Normal, QString(), &ok).trimmed();
     if (!ok || front.isEmpty())
         return;
 
-    QString back = QInputDialog::getText(this, tr("Nowa Fiszka"), tr("Podaj s³owo w innym jêzyku:"), QLineEdit::Normal, QString(), &ok).trimmed();
+    QString back = QInputDialog::getText(this, tr("New Fishcard"), tr("Input word in other language:"), QLineEdit::Normal, QString(), &ok).trimmed();
     if (!ok || back.isEmpty())
         return;
 
@@ -59,37 +59,58 @@ void MainWindow::displaySelectedFishka(int index)
 void MainWindow::removeFishka()
 {
     int currentIndex = ui.Fishka_list_Box->currentIndex();
-    Fishcard currentFishCard = fishcards[currentIndex];
-    std::string lineToRemove = currentFishCard.getFront().toStdString() + ":" + currentFishCard.getBack().toStdString();
-
-      
     if (currentIndex != -1)
     {
+        Fishcard currentFishCard = fishcards[currentIndex];
+        std::string lineToRemove = currentFishCard.getFront().toStdString() + ":" + currentFishCard.getBack().toStdString();
+
+        //wywozimy fiszke z wszystkiego auauauuuu
         fishcards.removeAt(currentIndex);
         ui.Fishka_list_Box->removeItem(currentIndex);
+
+        //petla zmienia numerki po usunieciu
+        for (int i = currentIndex; i < fishcards.size(); ++i)
+        {
+            std::string displayText = std::to_string(i + 1) + ". " + fishcards[i].getFront().toStdString();
+            ui.Fishka_list_Box->setItemText(i, QString::fromStdString(displayText));
+        }
+
+        if (currentIndex < fishcards.size())
+        {
+            ui.Fishka_list_Box->setCurrentIndex(currentIndex);
+        }
+        else if (!fishcards.isEmpty())
+        {
+            ui.Fishka_list_Box->setCurrentIndex(fishcards.size() - 1);
+        }
+
+        std::vector<std::string> lines;
+        std::string lineToWrite;
+        std::ifstream inFile("fishCards.txt");
+
+        while (std::getline(inFile, lineToWrite))
+            lines.push_back(lineToWrite);
+        inFile.close();
+
+        auto lineToRemoveIterator = std::find(lines.begin(), lines.end(), lineToRemove);
+        if (lineToRemoveIterator != lines.end())
+        {
+            *lineToRemoveIterator = "";
+        }
+
+        std::ofstream outFile("fishCards.txt");
+
+        for (auto& line : lines)
+        {
+            if (!line.empty())
+            {
+                outFile << line << std::endl;
+            }
+        }
+        outFile.close();
     }
-
-    std::vector<std::string> lines;
-    std::string lineToWrite;
-    std::ifstream inFile("fishCards.txt");
-
-
-    while (std::getline(inFile, lineToWrite))
-        lines.push_back(lineToWrite);
-    inFile.close();
-
-
-    auto lineToRemoveIterator = std::find(lines.begin(), lines.end(), lineToRemove);
-    *lineToRemoveIterator = "";
-
-    std::ofstream outFile("fishCards.txt");
-
-    for (auto i = lines.begin(); i != lines.end(); i++)
-        if (*i != "")
-            outFile << *i << std::endl;
-    outFile.close();
-    
 }
+
 
 
 
@@ -120,16 +141,16 @@ void MainWindow::fishkaEdit()
     int currentIndex = ui.Fishka_list_Box->currentIndex();
     if (currentIndex == -1)
     {
-        QMessageBox::warning(this, tr("Edycja fiszki"), tr("Nie wybrano zadnej fiszki."));
+        QMessageBox::warning(this, tr("Fishcard edition."), tr("No fishcard has been selected."));
         return;
     }
 
     QMessageBox msgBox;
-    msgBox.setWindowTitle(tr("Edytuj fiszke"));
-    msgBox.setText(tr("Wybierz co chcesz edytowac:"));
-    msgBox.addButton(tr("Edytuj front"), QMessageBox::ActionRole);
-    msgBox.addButton(tr("Edytuj back"), QMessageBox::ActionRole);
-    msgBox.addButton(tr("Edytuj oba"), QMessageBox::ActionRole);
+    msgBox.setWindowTitle(tr("Edit fishcard"));
+    msgBox.setText(tr("Choose what you desire to edit:"));
+    msgBox.addButton(tr("Edit front"), QMessageBox::ActionRole);
+    msgBox.addButton(tr("Edit back"), QMessageBox::ActionRole);
+    msgBox.addButton(tr("Edit both"), QMessageBox::ActionRole);
 
     int result = msgBox.exec();
 
@@ -161,12 +182,12 @@ void MainWindow::editFishkaPart(int index, bool editFront, bool editBack)
     bool ok;
     if (editFront)
     {
-        QString newFront = QInputDialog::getText(this, tr("Edycja fiszki"), tr("Nowy front:"), QLineEdit::Normal, card.getFront(), &ok).trimmed();
+        QString newFront = QInputDialog::getText(this, tr("Fishcard edition"), tr("New front:"), QLineEdit::Normal, card.getFront(), &ok).trimmed();
         if (ok && !newFront.isEmpty()) card.setFront(newFront);
     }
     if (editBack)
     {
-        QString newBack = QInputDialog::getText(this, tr("Edycja fiszki"), tr("Nowy back:"), QLineEdit::Normal, card.getBack(), &ok).trimmed();
+        QString newBack = QInputDialog::getText(this, tr("Fishcard edition"), tr("New back:"), QLineEdit::Normal, card.getBack(), &ok).trimmed();
         if (ok && !newBack.isEmpty()) card.setBack(newBack);
     }
 
