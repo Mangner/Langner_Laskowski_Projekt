@@ -1,6 +1,6 @@
 solidny:robust
-slowo:word
 takie:life
-pijak:driver
 that's:life
-czlowiek:human
+numer4:four
+numer 5:xd
+numer6:six

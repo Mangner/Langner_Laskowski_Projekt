@@ -17,7 +17,7 @@ MainWindow::MainWindow(QWidget* parent) : QMainWindow(parent)
     this->setFocusPolicy(Qt::StrongFocus);
 
     // Set scalable background image
-    QPixmap background("C:\\Users\\Andrzej\\Desktop\\tlo_fiszki.jpg");
+    QPixmap background("tlo_fiszki.jpg");
     QPalette palette;
     palette.setBrush(QPalette::Window, QBrush(background));
     this->setPalette(palette);
@@ -25,14 +25,6 @@ MainWindow::MainWindow(QWidget* parent) : QMainWindow(parent)
     // Ensure that buttons and other widgets do not have a transparent background
     this->setAutoFillBackground(true);
 
-   // ui.fishcard_Box->setStyleSheet(
-   //     "QTextEdit {"
-   //     "font: 22pt 'Microsoft YaHei UI';"
-   //     "border: 3px solid #000000;"
-   //     "background-color: #808080;"
-   //     "text-align: center;"  // Center text horizontally
-   //     "}"
-   // );
     connect(ui.add_Fishka_Button, &QPushButton::clicked, this, &MainWindow::addFishka);
     connect(ui.subb_Fishka_Button, &QPushButton::clicked, this, &MainWindow::removeFishka);
     connect(ui.flip_Fishka_Button, &QPushButton::clicked, this, &MainWindow::flipFishka);

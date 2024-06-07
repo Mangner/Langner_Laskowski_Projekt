@@ -57,6 +57,11 @@ void MainWindow::addFishka()
     FishCardsSet << (newCard.getFront()).toStdString() << ":" << (newCard.getBack()).toStdString() << std::endl;
     FishCardsSet.close();
 
+    for (int i = 0; i < fishcards.size(); ++i)
+    {
+        QString displayText = QString::number(i + 1) + ". " + fishcards[i].getFront();
+        ui.Fishka_list_Box->setItemText(i, displayText);
+    }
 }
 
 
