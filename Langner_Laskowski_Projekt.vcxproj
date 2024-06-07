@@ -99,6 +99,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Fishcard.h" />
+    <ClInclude Include="InputError.h" />
   </ItemGroup>
   <ItemGroup>
     <Text Include="fishCards.txt" />

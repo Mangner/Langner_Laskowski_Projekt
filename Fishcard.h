@@ -10,6 +10,7 @@ private:
     QString back;
 
 public:
+    Fishcard() {};
     Fishcard(const QString& front, const QString& back);
     QString getFront() const;
     QString getBack() const;

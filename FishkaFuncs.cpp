@@ -6,8 +6,8 @@
 #include <iostream>
 #include <fstream>
 #include <algorithm>
-
-
+#include "InputError.h"
+#include <string>
 
 
 
@@ -22,8 +22,27 @@ void MainWindow::addFishka()
     if (!ok || back.isEmpty())
         return;
 
+    Fishcard newCard;
 
-    Fishcard newCard(front, back);
+
+    try
+    {
+        newCard = Fishcard(front, back);
+    }
+    catch (const InputError& error)
+    {
+        std::string communicate = std::string(error.what());
+        QMessageBox::warning(this, tr("Invalid Input."), QString::fromStdString(communicate));
+        return;
+    }
+    catch (const std::exception& error)
+    {
+        QMessageBox::warning(this, tr("Unknown Error"), tr("Unknown Error."));
+        return;
+    }
+
+
+
     fishcards.append(newCard);
     ui.Fishka_list_Box->addItem(QString::number(ui.Fishka_list_Box->currentIndex() + 2) + ". " + newCard.getFront());
 
