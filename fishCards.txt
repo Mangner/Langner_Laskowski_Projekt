@@ -1,5 +1,4 @@
 solidny:robust
 slowo:word
-takie:life
-pijak:driver
 that's:life
+czlowiek:human

@@ -18,25 +18,75 @@
     <item>
      <widget class="QLabel" name="fishcard_List_Label">
       <property name="text">
-       <string>Lista Fiszek</string>
+       <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:16pt; font-weight:700; color:#ffffff;&quot;&gt;Lista Fiszek&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
       </property>
      </widget>
     </item>
     <item>
-     <widget class="QComboBox" name="Fishka_list_Box"/>
+     <widget class="QComboBox" name="Fishka_list_Box">
+      <property name="styleSheet">
+       <string notr="true">QComboBox {
+	font: 700 12pt &quot;Microsoft YaHei UI&quot;;
+    border: 3px solid #000000;  /* Czarna obramówka */
+    background-color: #808080;  /* Szare wypełnienie */
+    color: black;  /* Biały kolor tekstu */
+}</string>
+      </property>
+     </widget>
     </item>
     <item>
      <widget class="QLabel" name="fishka_Label">
       <property name="text">
-       <string>Fiszka</string>
+       <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:16pt; font-weight:700; color:#ffffff;&quot;&gt;Fiszka&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
       </property>
      </widget>
     </item>
     <item>
-     <widget class="QTextEdit" name="fishcard_Box"/>
+     <widget class="QTextEdit" name="fishcard_Box">
+      <property name="styleSheet">
+       <string notr="true">QTextEdit {
+	font: 22pt &quot;Microsoft YaHei UI&quot;;
+    border: 3px solid  #000000;  /* Czarna obramówka */
+    background-color: #808080;  /* Szare wypełnienie */
+}</string>
+      </property>
+      <property name="lineWidth">
+       <number>1</number>
+      </property>
+      <property name="midLineWidth">
+       <number>0</number>
+      </property>
+      <property name="sizeAdjustPolicy">
+       <enum>QAbstractScrollArea::AdjustToContents</enum>
+      </property>
+      <property name="autoFormatting">
+       <set>QTextEdit::AutoNone</set>
+      </property>
+      <property name="tabChangesFocus">
+       <bool>false</bool>
+      </property>
+      <property name="html">
+       <string>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
+&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;meta charset=&quot;utf-8&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
+p, li { white-space: pre-wrap; }
+hr { height: 1px; border-width: 0; }
+li.unchecked::marker { content: &quot;\2610&quot;; }
+li.checked::marker { content: &quot;\2612&quot;; }
+&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'Microsoft YaHei UI'; font-size:22pt; font-weight:400; font-style:normal;&quot;&gt;
+&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;br /&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+      </property>
+     </widget>
     </item>
     <item>
      <widget class="QPushButton" name="flip_Fishka_Button">
+      <property name="styleSheet">
+       <string notr="true">QPushButton {
+	font: 700 12pt &quot;Microsoft YaHei UI&quot;;
+    border: 3px solid #000000;  /* Czarna obramówka */
+    background-color: #808080;  /* Szare wypełnienie */
+    color: black;  /* Biały kolor tekstu */
+}</string>
+      </property>
       <property name="text">
        <string> Obróć fiszkę</string>
       </property>
@@ -44,6 +94,14 @@
     </item>
     <item>
      <widget class="QPushButton" name="edit_fishka_Button">
+      <property name="styleSheet">
+       <string notr="true">QPushButton {
+	font: 700 12pt &quot;Microsoft YaHei UI&quot;;
+    border: 3px solid #000000;  /* Czarna obramówka */
+    background-color: #808080;  /* Szare wypełnienie */
+    color: black;  /* Biały kolor tekstu */
+}</string>
+      </property>
       <property name="text">
        <string>Edytuj fiszkę</string>
       </property>
@@ -51,6 +109,14 @@
     </item>
     <item>
      <widget class="QPushButton" name="add_Fishka_Button">
+      <property name="styleSheet">
+       <string notr="true">QPushButton {
+	font: 700 12pt &quot;Microsoft YaHei UI&quot;;
+    border: 3px solid #000000;  /* Czarna obramówka */
+    background-color: #808080;  /* Szare wypełnienie */
+    color: black;  /* Biały kolor tekstu */
+}</string>
+      </property>
       <property name="text">
        <string>Dodaj fiszkę</string>
       </property>
@@ -58,6 +124,14 @@
     </item>
     <item>
      <widget class="QPushButton" name="subb_Fishka_Button">
+      <property name="styleSheet">
+       <string notr="true">QPushButton {
+	font: 700 12pt &quot;Microsoft YaHei UI&quot;;
+    border: 3px solid #000000;  /* Czarna obramówka */
+    background-color: #808080;  /* Szare wypełnienie */
+    color: black;  /* Biały kolor tekstu */
+}</string>
+      </property>
       <property name="text">
        <string>Usuń fiszkę</string>
       </property>

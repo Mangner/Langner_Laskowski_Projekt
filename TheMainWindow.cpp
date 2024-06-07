@@ -3,9 +3,11 @@
 #include <QInputDialog>
 #include <QAbstractButton>
 #include <QKeyEvent>
+#include <QPalette>
+#include <QBrush>
+#include <QPixmap>
 #include <iostream>
 #include <fstream>
-
 
 
 
@@ -14,14 +16,23 @@ MainWindow::MainWindow(QWidget* parent) : QMainWindow(parent)
     ui.setupUi(this);
     this->setFocusPolicy(Qt::StrongFocus);
 
-    ui.fishcard_Box->setStyleSheet(
-        "QTextEdit {"
-        "font-size: 24pt;"
-        "font-weight: bold;"
-        "text-align: center;"
-        "}"
-    );
+    // Set scalable background image
+    QPixmap background("C:\\Users\\Andrzej\\Desktop\\tlo_fiszki.jpg");
+    QPalette palette;
+    palette.setBrush(QPalette::Window, QBrush(background));
+    this->setPalette(palette);
 
+    // Ensure that buttons and other widgets do not have a transparent background
+    this->setAutoFillBackground(true);
+
+   // ui.fishcard_Box->setStyleSheet(
+   //     "QTextEdit {"
+   //     "font: 22pt 'Microsoft YaHei UI';"
+   //     "border: 3px solid #000000;"
+   //     "background-color: #808080;"
+   //     "text-align: center;"  // Center text horizontally
+   //     "}"
+   // );
     connect(ui.add_Fishka_Button, &QPushButton::clicked, this, &MainWindow::addFishka);
     connect(ui.subb_Fishka_Button, &QPushButton::clicked, this, &MainWindow::removeFishka);
     connect(ui.flip_Fishka_Button, &QPushButton::clicked, this, &MainWindow::flipFishka);
@@ -91,7 +102,7 @@ void MainWindow::loadFishCards()
         fishcards.append(newCard);
         ui.Fishka_list_Box->addItem(QString::number(ui.Fishka_list_Box->currentIndex() + 2) + ". " + newCard.getFront());
 
-        QString text = QString("<div align='center' style='font-size: 24pt; font-weight: bold;'>%1</div>").arg(newCard.getFront());
+        QString text = QString("<div align='center' style='font-size: 30pt; font-weight: bold;'>%1</div>").arg(newCard.getFront());
         ui.fishcard_Box->setHtml(text);
 
         ui.Fishka_list_Box->setCurrentIndex(fishcards.size() - 1);

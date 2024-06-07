@@ -64,11 +64,10 @@ void MainWindow::removeFishka()
         Fishcard currentFishCard = fishcards[currentIndex];
         std::string lineToRemove = currentFishCard.getFront().toStdString() + ":" + currentFishCard.getBack().toStdString();
 
-        //wywozimy fiszke z wszystkiego auauauuuu
         fishcards.removeAt(currentIndex);
         ui.Fishka_list_Box->removeItem(currentIndex);
 
-        //petla zmienia numerki po usunieciu
+        //poprawi³em indeksowanie po usuwaniu
         for (int i = currentIndex; i < fishcards.size(); ++i)
         {
             std::string displayText = std::to_string(i + 1) + ". " + fishcards[i].getFront().toStdString();
@@ -218,6 +217,14 @@ void MainWindow::editFishkaPart(int index, bool editFront, bool editBack)
 
 
     ui.Fishka_list_Box->setItemText(index, card.getFront());
+
+    //naprawi³em indeksowanie przy edytowaniu
+    for (int i = 0; i < fishcards.size(); ++i)
+    {
+        QString displayText = QString::number(i + 1) + ". " + fishcards[i].getFront();
+        ui.Fishka_list_Box->setItemText(i, displayText);
+    }
+
     displaySelectedFishka(index);
 }
 
