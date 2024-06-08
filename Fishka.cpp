@@ -5,10 +5,7 @@
 
 Fishcard::Fishcard(const QString& front, const QString& back)
 {
-	char wrongSign = ':';
-	
 	std::string frontAsStdString = front.toStdString();
-
 	if (frontAsStdString.find(':') != std::string::npos)
 	{
 		throw InputError();
@@ -46,6 +43,14 @@ QString Fishcard::getBack() const
 
 void Fishcard::setFront(QString newFront)
 {
+	std::string frontAsStdString = newFront.toStdString();
+
+
+	if (frontAsStdString.find(':') != std::string::npos)
+	{
+		throw InputError();
+	}
+
 	this->front = newFront;
 }
 
@@ -54,5 +59,13 @@ void Fishcard::setFront(QString newFront)
 
 void Fishcard::setBack(QString newBack)
 {
+	std::string backAsStdString = newBack.toStdString();
+
+
+	if (backAsStdString.find(':') != std::string::npos)
+	{
+		throw InputError();
+	}
+
 	this->back = newBack;
 }

@@ -1,6 +1,3 @@
 solidny:robust
 takie:life
 that's:life
-numer4:four
-numer 5:xd
-numer6:six

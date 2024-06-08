@@ -88,15 +88,17 @@ void MainWindow::removeFishka()
         Fishcard currentFishCard = fishcards[currentIndex];
         std::string lineToRemove = currentFishCard.getFront().toStdString() + ":" + currentFishCard.getBack().toStdString();
 
+
         fishcards.removeAt(currentIndex);
         ui.Fishka_list_Box->removeItem(currentIndex);
 
-        //poprawi³em indeksowanie po usuwaniu
+       
         for (int i = currentIndex; i < fishcards.size(); ++i)
         {
             std::string displayText = std::to_string(i + 1) + ". " + fishcards[i].getFront().toStdString();
             ui.Fishka_list_Box->setItemText(i, QString::fromStdString(displayText));
         }
+
 
         if (currentIndex < fishcards.size())
         {
@@ -107,13 +109,16 @@ void MainWindow::removeFishka()
             ui.Fishka_list_Box->setCurrentIndex(fishcards.size() - 1);
         }
 
+
         std::vector<std::string> lines;
         std::string lineToWrite;
         std::ifstream inFile("fishCards.txt");
 
+
         while (std::getline(inFile, lineToWrite))
             lines.push_back(lineToWrite);
         inFile.close();
+
 
         auto lineToRemoveIterator = std::find(lines.begin(), lines.end(), lineToRemove);
         if (lineToRemoveIterator != lines.end())
@@ -121,8 +126,8 @@ void MainWindow::removeFishka()
             *lineToRemoveIterator = "";
         }
 
-        std::ofstream outFile("fishCards.txt");
 
+        std::ofstream outFile("fishCards.txt");
         for (auto& line : lines)
         {
             if (!line.empty())
@@ -203,18 +208,57 @@ void MainWindow::editFishkaPart(int index, bool editFront, bool editBack)
     std::string lineToChange = card.getFront().toStdString() + ":" + card.getBack().toStdString();
 
     bool ok;
+
+
     if (editFront)
     {
         QString newFront = QInputDialog::getText(this, tr("Fishcard edition"), tr("New front:"), QLineEdit::Normal, card.getFront(), &ok).trimmed();
-        if (ok && !newFront.isEmpty()) card.setFront(newFront);
+        if (ok && !newFront.isEmpty())
+        {
+            try
+            {
+                card.setFront(newFront);
+            }
+            catch (const InputError& error)
+            {
+                std::string communicate = std::string(error.what());
+                QMessageBox::warning(this, tr("Invalid Input."), QString::fromStdString(communicate));
+                return;
+            }
+            catch (const std::exception& error)
+            {
+                QMessageBox::warning(this, tr("Unknown Error"), tr("Unknown Error."));
+                return;
+            }
+        }
+
     }
+
+
     if (editBack)
     {
         QString newBack = QInputDialog::getText(this, tr("Fishcard edition"), tr("New back:"), QLineEdit::Normal, card.getBack(), &ok).trimmed();
-        if (ok && !newBack.isEmpty()) card.setBack(newBack);
+        if (ok && !newBack.isEmpty())
+        {
+            try
+            {
+                card.setBack(newBack);
+            }
+            catch (const InputError& error)
+            {
+                std::string communicate = std::string(error.what());
+                QMessageBox::warning(this, tr("Invalid Input."), QString::fromStdString(communicate));
+                return;
+            }
+            catch (const std::exception& error)
+            {
+                QMessageBox::warning(this, tr("Unknown Error"), tr("Unknown Error."));
+                return;
+            }
+        }
     }
-
         
+
     std::vector<std::string> lines;
     std::string lineToWrite;
     std::ifstream inFile("fishCards.txt");
@@ -223,7 +267,6 @@ void MainWindow::editFishkaPart(int index, bool editFront, bool editBack)
     while (std::getline(inFile, lineToWrite))
         lines.push_back(lineToWrite);
     inFile.close();
-
 
 
     auto lineToChangeIterator = std::find(lines.begin(), lines.end(), lineToChange);
@@ -239,10 +282,7 @@ void MainWindow::editFishkaPart(int index, bool editFront, bool editBack)
     outFile.close();
 
 
-
     ui.Fishka_list_Box->setItemText(index, card.getFront());
-
-    //naprawi³em indeksowanie przy edytowaniu
     for (int i = 0; i < fishcards.size(); ++i)
     {
         QString displayText = QString::number(i + 1) + ". " + fishcards[i].getFront();
