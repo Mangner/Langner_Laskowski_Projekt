@@ -291,6 +291,3 @@ void MainWindow::editFishkaPart(int index, bool editFront, bool editBack)
 
     displaySelectedFishka(index);
 }
-
-
-
